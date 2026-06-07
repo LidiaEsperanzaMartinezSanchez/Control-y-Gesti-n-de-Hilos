@@ -26,4 +26,23 @@ public class Cuenta {
         this.saldo = saldo;
     }
     
+    //Metodo para retirar y probar los hilos
+    public synchronized void retirar(String nombreCajero, int cantidad) {
+    System.out.println(nombreCajero + " consulta saldo actual: " + saldo);
+    
+    if (saldo >= cantidad) {
+        System.out.println(nombreCajero + " esta procesando el retiro de: " + cantidad);
+        try {//preuba el tiempo de espera del cajero
+            Thread.sleep(1000); 
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+            
+        saldo -= cantidad; 
+        System.out.println(nombreCajero + " realizo el retiro, Saldo restante: " + saldo);
+    } else {
+        System.out.println(nombreCajero + ":Errr: Saldo insuficiente");
+        }
+    }
+    
 }
