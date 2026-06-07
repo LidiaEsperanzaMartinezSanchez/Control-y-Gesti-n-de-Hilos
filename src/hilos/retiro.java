@@ -8,7 +8,7 @@ package hilos;
  *
  * @author jaziel
  */
-public class retiro {
+public class retiro implements Runnable{
     private Cuenta cuentaCompartida;
     private String nombreCajero;
     private int CR;
@@ -40,5 +40,11 @@ public class retiro {
     }
     public void setCR(int CR){
         this.CR = CR;
+    }
+    
+    @Override
+    public void run() {
+        //ejecuta el retiro
+        cuentaCompartida.retirar(nombreCajero, CR);
     }
 }
